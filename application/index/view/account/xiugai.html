@@ -1,0 +1,178 @@
+<{include file="Public:header" /}>
+<style>
+.select {
+	opacity: 1.0
+}
+
+.unselect {
+	opacity: 0.1
+}
+</style>
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header" style="margin-top: 0px;"></h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<div class="row">
+		<div class="col-lg-12"></div>
+		<div class="row" style="margin-left: 20%;">
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<b>修改密码</b>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="dataTable_wrapper">
+							<div id="dataTables-example_wrapper"
+								class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+								<div class="row">
+									<div class="col-sm-4">
+										<div class="dataTables_length">
+											<table>
+												<tr>
+													<td>原密码: <input type="password" id="password" /></td>
+												</tr>
+												<tr>
+													<td>新密码: <input type="password" id="password1" /></td>
+												</tr>
+												<tr>
+													<td>确认密码: <input type="password" id="password2" /></td>
+												</tr>
+												<tr>
+													<td style="padding-top: 5px;"><input type="button"
+														id="btn" value="提交"></td>
+												</tr>
+											</table>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.panel -->
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+
+	</div>
+
+</div>
+</form>
+</div>
+
+<script src="__PUBLIC__/js/jquery-1.8.3.min.js" type="text/javascript">
+	
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#checkedAll").click(function() {
+			if ($(this).prop('checked')) { // 全选 
+				$("input[name='checkbox_name']").each(function() {
+					$(this).prop('checked', true);
+				});
+			} else { // 取消全选 
+				$("input[name='checkbox_name']").each(function() {
+					$(this).prop('checked', false);
+					;
+				});
+			}
+		});
+
+	});
+
+	// function link(){
+	//      var checkedList = new Array();
+	//      $("input[name='checkbox_name']:checked").each(function(){
+	//          checkedList.push($(this).val());
+	//      });
+	//      alert(checkedList);
+	//    }
+</script>
+<script src="__PUBLIC__/js/bui.js"></script>
+<!-- 删除用户 -->
+<script type="text/javascript">
+	//消息消失
+	function dispoint(messge) {
+		BUI.Message.Show({
+			msg : messge,
+			icon : 'success',
+			buttons : [],
+			autoHide : true,
+			autoHideDelay : 1000
+
+		});
+	}
+
+	function dispoint_err(messge) {
+		BUI.Message.Show({
+			msg : messge,
+			icon : 'error',
+			buttons : [],
+			autoHide : true,
+			autoHideDelay : 3000
+
+		});
+	}
+
+	function show(hidden) {
+		BUI.Message.Confirm('确认要删除？', function() {
+			setTimeout(function() {
+				$.ajax({
+					type : 'get',
+					url : '__URL__/delFreerMac?id=' + hidden,
+					success : function(msg) {
+						if (msg == 'ok') {
+							dispoint("删除成功！");
+							location.reload();
+						} else {
+							dispoint("删除失败！");
+						}
+
+					}
+				});
+
+				//BUI.Message.Alert('这只是简单的错误信息','error');
+			});
+
+		}, 'question');
+	}
+
+	$('#btn').click(function() {
+		// alert(123);return;
+		$password = $('#password').val();
+		$password1 = $('#password1').val();
+		$password2 = $('#password2').val();
+		$.ajax({
+			type : 'post',
+			url : '__URL__/ajaxupdatepassword',
+			data : {
+				'password' : $password,
+				'password1' : $password1,
+				'password2' : $password2
+			},
+			dataType : 'json',
+			success : function(result) {
+				if (result.msg == 3) {
+					dispoint('老密码输入错误');
+				} else if (result.msg == 2) {
+					dispoint('两次密码输入不一致');
+				} else if (result.msg == 1) {
+					dispoint('密码修改成功');
+					//   dialog.close();
+				} else {
+					dispoint('密码修改失败');
+				}
+			}
+		})
+	})
+</script>
+
+<{include file="Public:footer" /}>

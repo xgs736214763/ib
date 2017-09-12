@@ -1,0 +1,220 @@
+<{include file="Public:header" /}>
+
+<link rel="stylesheet" href="__PUBLIC__/js/leaflet/leaflet.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/leaflet.label.css" />
+
+<script src="__PUBLIC__/js/jquery.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript" src="__PUBLIC__/js/layer/layer.js"></script>
+<!--<script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>-->
+<script src="__PUBLIC__/js/leaflet/leaflet-src.js"></script>
+
+<script src="__PUBLIC__/js/leaflet/src/Label.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/BaseMarkerMethods.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/Marker.Label.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/Map.Label.js"></script>
+<style type="text/css">
+#holder {
+	height: 500px;
+}
+</style>
+
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header" style="margin-top: 0px;"></h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<div class="panel-body">
+		<div class="dataTable_wrapper">
+			<div id="dataTables-example_wrapper"
+				class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+				<div class="row">
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="col-sm-6">
+								<form action="__URL__/position" method="get" id="forms">
+									<div class="dataTables_filter" style="float: left;">
+										<label>终端mac: <input type="search" name="mac"
+											id="searchmac" class="form-control input-sm"
+											placeholder="请输入终端mac">
+										</label> <input type="text" id="x" style="display: none;" /> <input
+											type="text" id="y" style="display: none;" /> <input
+											type="text" id="floor_id" name='floor_id' value="<{$map.id}>"
+											style="display: none;" /> <input type="text" id="campus_id"
+											name="campus_id" value="<{$map.campus_id}>"
+											style="display: none;" /> <input type="text"
+											id="building_id" name="building_id"
+											value="<{$map.building_id}>" style="display: none;" /> <input
+											type="button" class='btn btn-primary' id="btn" value="查询" />
+										<a id="show" href="#"><input type="button" id='shows'
+											class='btn btn-success' value="ap显示" /></a>
+									</div>
+								</form>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<b>实时位置 <span id="cnt" style="color: red;"></span>场所：<{$map.campus_name}>--<{$map.floor_name}>--<span
+										id="floornames" style="color: red;"></span>&nbsp; 当前x坐标<span
+										id="posX1" style="color: red;"></span> &nbsp;当前y坐标<span
+										id="posY1" style="color: red;"></span></b></br> <b>鼠标坐标: x坐标<span
+										id="posX"></span> &nbsp;y坐标<span id="posY"></span></b>
+									<!-- /.panel-heading -->
+									<div class="panel-body">
+										<div class="dataTable_wrapper">
+											<div id="dataTables-example_wrapper"
+												class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+
+												<div class="row">
+
+													<div class="col-sm-12">
+														<div id="holder" style="cursor: default"></div>
+													</div>
+													<div style="clear: both;"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /.panel-body -->
+							</div>
+							<!-- /.panel -->
+						</div>
+						<!-- /.col-lg-12 -->
+					</div>
+				</div>
+				<script type="text/javascript"
+					src="__PUBLIC__/js/leaflet/MovingMarker.js">
+</script>
+				<script type="text/javascript">
+	var mymap = L.map('holder', {
+				crs: L.CRS.Simple,
+				//center: [<{$map.floor_img_Y}>/2 , <{$map.floor_img_X}>/2],
+			    zoomSnap:0.5,
+			    dragging:true,//地图拖动
+			    touchZoom:true,//手机放大缩小
+			    doubleClickZoom:false,//双击地图变大
+			    animate:false
+			});
+		 var bounds = [[0, 0], [<{$map.floor_img_Y}>, <{$map.floor_img_X}>]];
+         var image = L.imageOverlay('__PUBLIC__/<{$map.floor_img_path}>', bounds).addTo(mymap);
+        // mymap.fitBounds(bounds);
+          mymap.setView([<{$map.floor_img_Y}>/2 , <{$map.floor_img_X}>/2],<{$map.magnification}>);
+        //定义图标
+        var onicon = L.icon({
+            iconUrl: '__PUBLIC__/js/leaflet/images/20.png',
+            iconSize: [10, 10],
+            iconAnchor: [0, 0]
+        });
+        var onicons = L.icon({
+            iconUrl: '__PUBLIC__/js/leaflet/images/ap.png',
+            iconSize: [20, 20],
+            iconAnchor: [15, 15],
+            popupAnchor: [10, 10],
+            labelAnchor: [-10, -13] // as I want the label to appear 2px past the icon (18 + 2 - 6)
+        });
+        var oficons = L.icon({
+            iconUrl: '__PUBLIC__/js/leaflet/images/ap_gray.png',
+            iconSize: [20, 20],
+            iconAnchor: [15, 15],
+            popupAnchor: [5, 5],
+            labelAnchor: [-10, -13] // as I want the label to appear 2px past the icon (18 + 2 - 6)
+        });
+     //地图系数
+    $coefficienty = <?php echo $map['PhysicalSizeY']/$map['floor_img_Y']?>;
+    $coefficientx =<?php echo $map['PhysicalSizeX']/$map['floor_img_X']?>;
+    //鼠标移动
+function  onfocus(e){
+    var x = <{$map.floor_img_Y}>*$coefficienty-e.latlng.lat*$coefficienty;
+    var y= e.latlng.lng*$coefficientx;
+
+    //alert(x);
+    y = Math.floor(y* 100) / 100;
+    x= Math.floor(x* 100) / 100;
+    $('#posX').html(y);
+    $('#posY').html(x);
+}
+mymap.on('mousemove', onfocus);
+//ap位置
+var aplist =<{$aplist}>;
+returnList=  eval(aplist);
+//console.log(returnList);
+if(aplist != null){
+    //mulist= returnList['mulist'];
+    muCnt=aplist.length;
+    //alert(muCnt);
+    for(i=0;i<muCnt;i++){
+        if(aplist[i].status==1)
+        {
+            //alert(aplist[i].Xcor);
+            mymap.on('locationfound', onLocationFound(<{$map.floor_img_Y }>-aplist[i].Ycor/$coefficienty, aplist[i].Xcor/$coefficientx,aplist[i].mac,aplist[i].apname,aplist[i].id));
+            //  mymap.on('locationfound', onLocationFound(mulist[i].locationY, mulist[i].locationX,mulist[i].mac,mulist[i].devType));
+        }else
+        {
+            mymap.on('locationfound', ofLocationFound(<{$map.floor_img_Y }>-aplist[i].Ycor/$coefficienty, aplist[i].Xcor/$coefficientx,aplist[i].mac,aplist[i].apname,aplist[i].id));
+
+        }
+
+
+    }
+}
+
+//
+function onLocationFound(e,f,mac,apname,id) {
+    L.marker([e,f],{icon:onicons})
+        .bindLabel(apname, { noHide: true,className:'iconsize',opacity:0.5})
+        .addTo(mymap);
+
+}
+function ofLocationFound(e,f,mac,apname,id) {
+    L.marker([e, f],{icon:oficons})
+        .bindLabel(apname, { noHide: true ,className:'iconsize',opacity:0.5}).addTo(mymap);
+}
+
+        //实时位置
+var ajaxarr =[];
+var $i=0;//查询次数
+var marker = L.marker([0, 0],{icon:onicon}).addTo(mymap);//定义一个marker 坐标点为0，0
+function ajaxdata(){
+	$data = $('#forms').serialize();
+	$i++;
+	$.ajax({
+			type:'get',
+			data:$data,
+			dataType:'json',
+			url:"<{:Url('Datepoint/ajaxpos')}>",
+			success:function(data){
+				var a1=ajaxarr;
+			    ajaxarr=[<{$map.floor_img_Y }>- (data.y)/$coefficienty, data.x/$coefficientx];
+                $('#cnt').html($i);
+                $('#posX1').html(data.x);//udp返回的x坐标
+                $('#posY1').html(data.y);//udp返回的y坐标
+                $('#floornames').html(data.floor_name);
+					if(ajaxarr.length>0){
+                        marker.setLatLng([ajaxarr[0], ajaxarr[1]]);
+					}		
+			}
+	})
+						
+}
+$('#btn').click(function(){
+	var ints=self.setInterval("ajaxdata()",5000);
+})
+//ap的显示与隐藏
+$status = <?php echo isset($_GET['status'])?$_GET['status']:0;?>;
+
+if($status!=0){
+    $('#show').attr('href',"__URL__/position?status=0&floor_id=<{$map.id}>");
+    $('#shows').attr('value',"ap隐藏");
+}else{
+    $('#show').attr('href',"__URL__/position?status=1&floor_id=<{$map.id}>");
+
+}
+$('#searchmac').val("<{$Think.session.mac}>");
+					</script>
+
+				<script src="__PUBLIC__/js/bui.js"></script>
+
+				<{include file="Public:footer" /}>

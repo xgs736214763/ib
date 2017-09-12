@@ -1,0 +1,1028 @@
+[ 2017-07-28T12:12:17+08:00 ] ::1 ::1 GET /ib5/
+[ log ] localhost/ib5/ [运行时间：0.192011s][吞吐率：5.21req/s] [内存消耗：3,292.94kb] [文件加载：50]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->index[ G:\wamp64\www\ib5\application\index\controller\Login.php ]
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:18+08:00 ] ::1 ::1 POST /ib5/index.php/index/login/dologin.html
+[ log ] localhost/ib5/index.php/index/login/dologin.html [运行时间：0.168009s][吞吐率：5.95req/s] [内存消耗：4,343.64kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'dologin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://localhost',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'usernamefld' => 'admin',
+  'passwordfld' => 'admin',
+  'remember' => 'Remember Me',
+)
+[ info ] [ RUN ] app\index\controller\Login->dologin[ G:\wamp64\www\ib5\application\index\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `commager` [ RunTime:0.004000s ]
+[ sql ] [ SQL ] SELECT * FROM `commager` WHERE  `loginName` = 'admin'  AND `passwd` = '21232f297a57a5a743894a0e4a801fc3' LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:18+08:00 ] ::1 ::1 GET /ib5/index.php/index/index/index.html
+[ log ] localhost/ib5/index.php/index/index/index.html [运行时间：0.210012s][吞吐率：4.76req/s] [内存消耗：4,603.41kb] [文件加载：58]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ G:\wamp64\www\ib5\application\index\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\index\index.html [ array (
+  0 => 'squarecount',
+  1 => 'buildingcount',
+  2 => 'floorcount',
+  3 => 'apcount',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `square` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `building` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `building` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `floor` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003001s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `aps` LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:23+08:00 ] ::1 ::1 GET /ib5/index.php/index/place/floor.html
+[ log ] localhost/ib5/index.php/index/place/floor.html [运行时间：0.249014s][吞吐率：4.02req/s] [内存消耗：5,022.67kb] [文件加载：61]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'floor',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/index/index.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->floor[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\place\floor.html [ array (
+  0 => 'page',
+  1 => 'squarelist',
+  2 => 'floorlist',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.003001s ]
+[ sql ] [ SQL ] SELECT * FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `floor` INNER JOIN `square` `s` ON `s`.`id`=`floor`.`campus_id` INNER JOIN `building` `b` ON `b`.`id`=`floor`.`building_id` INNER JOIN `sys_location_info` `sys_location_info` ON `sys_location_info`.`location_id`=`s`.`location_id` LEFT JOIN ( SELECT count(*) AS `cnt`,`floor_id` FROM `aps` GROUP BY floor_id ) `a` ON `a`.`floor_id`=`floor`.`id` LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `s`.`campus_name`,`floor`.`floor_name`,`b`.`building_name`,`floor`.`floor_img_X`,`floor`.`floor_img_Y`,`floor_img_path`,`sys_location_info`.`location_name`,`floor`.`building_id`,`floor`.`campus_id`,`floor`.`id`,`a`.`cnt` FROM `floor` INNER JOIN `square` `s` ON `s`.`id`=`floor`.`campus_id` INNER JOIN `building` `b` ON `b`.`id`=`floor`.`building_id` INNER JOIN `sys_location_info` `sys_location_info` ON `sys_location_info`.`location_id`=`s`.`location_id` LEFT JOIN ( SELECT count(*) AS `cnt`,`floor_id` FROM `aps` GROUP BY floor_id ) `a` ON `a`.`floor_id`=`floor`.`id` LIMIT 0,10 [ RunTime:0.003000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:23+08:00 ] ::1 ::1 POST /ib5/index.php/index/place/getbuilding.html
+[ log ] localhost/ib5/index.php/index/place/getbuilding.html [运行时间：0.169010s][吞吐率：5.92req/s] [内存消耗：4,322.03kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'getbuilding',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->getbuilding[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `building` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `building` WHERE  (  campusId=1 ) [ RunTime:0.000000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:23+08:00 ] ::1 ::1 POST /ib5/index.php/index/place/getbuildings.html
+[ log ] localhost/ib5/index.php/index/place/getbuildings.html [运行时间：0.222013s][吞吐率：4.50req/s] [内存消耗：4,322.29kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'getbuildings',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->getbuildings[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `building` [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SELECT * FROM `building` WHERE  (  campusId=1 ) [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:34+08:00 ] ::1 ::1 GET /ib5/index.php/index/place/building.html
+[ log ] localhost/ib5/index.php/index/place/building.html [运行时间：0.246014s][吞吐率：4.06req/s] [内存消耗：4,975.02kb] [文件加载：61]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'building',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->building[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\place\building.html [ array (
+  0 => 'show',
+  1 => 'square',
+  2 => 'list',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `building` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `building` `b` INNER JOIN `square` `s` ON `b`.`campusId`=`s`.`id` INNER JOIN `sys_location_info` `l` ON `l`.`location_id`=`s`.`location_id` LEFT JOIN ( SELECT count(*) AS `cnt`,`building_id` FROM `aps` GROUP BY building_id ) `a` ON `a`.`building_id`=`b`.`id` LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `b`.`id`,`l`.`location_name`,`b`.`campusId`,`s`.`campus_name`,`b`.`building_name`,`a`.`cnt` FROM `building` `b` INNER JOIN `square` `s` ON `b`.`campusId`=`s`.`id` INNER JOIN `sys_location_info` `l` ON `l`.`location_id`=`s`.`location_id` LEFT JOIN ( SELECT count(*) AS `cnt`,`building_id` FROM `aps` GROUP BY building_id ) `a` ON `a`.`building_id`=`b`.`id` LIMIT 0,10 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `id`,`campus_name` FROM `square` [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:36+08:00 ] ::1 ::1 GET /ib5/index.php/index/place/square.html
+[ log ] localhost/ib5/index.php/index/place/square.html [运行时间：0.313018s][吞吐率：3.19req/s] [内存消耗：5,004.66kb] [文件加载：61]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'square',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/building.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->square[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\place\square.html [ array (
+  0 => 'list',
+  1 => 'pro',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `square` INNER JOIN `sys_location_info` `sys_location_info` ON `square`.`location_id`=`sys_location_info`.`location_id` LEFT JOIN ( SELECT count(*) AS `cnt`,`campus_id` FROM `aps` GROUP BY campus_id ) `a` ON `a`.`campus_id`=`square`.`id` LIMIT 1 [ RunTime:0.003001s ]
+[ sql ] [ SQL ] SELECT * FROM `square` INNER JOIN `sys_location_info` `sys_location_info` ON `square`.`location_id`=`sys_location_info`.`location_id` LEFT JOIN ( SELECT count(*) AS `cnt`,`campus_id` FROM `aps` GROUP BY campus_id ) `a` ON `a`.`campus_id`=`square`.`id` LIMIT 0,10 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sys_location_info` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `sys_location_info` WHERE  (  parent_location_id=0 ) [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:36+08:00 ] ::1 ::1 POST /ib5/index.php/index/place/ajaxgetareasbycityid.html
+[ log ] localhost/ib5/index.php/index/place/ajaxgetareasbycityid.html [运行时间：0.145009s][吞吐率：6.90req/s] [内存消耗：4,323.91kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'ajaxgetareasbycityid',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '13',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/square.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'location_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->ajaxGetAreasByCityId[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sys_location_info` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `sys_location_info` WHERE  (  parent_location_id=1 ) [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:38+08:00 ] ::1 ::1 GET /ib5/index.php/index/place/floor.html
+[ log ] localhost/ib5/index.php/index/place/floor.html [运行时间：0.256015s][吞吐率：3.91req/s] [内存消耗：4,739.82kb] [文件加载：59]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'floor',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/square.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->floor[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\place\floor.html [ array (
+  0 => 'page',
+  1 => 'squarelist',
+  2 => 'floorlist',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT * FROM `square` [ RunTime:0.001000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `floor` INNER JOIN `square` `s` ON `s`.`id`=`floor`.`campus_id` INNER JOIN `building` `b` ON `b`.`id`=`floor`.`building_id` INNER JOIN `sys_location_info` `sys_location_info` ON `sys_location_info`.`location_id`=`s`.`location_id` LEFT JOIN ( SELECT count(*) AS `cnt`,`floor_id` FROM `aps` GROUP BY floor_id ) `a` ON `a`.`floor_id`=`floor`.`id` LIMIT 1 [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SELECT `s`.`campus_name`,`floor`.`floor_name`,`b`.`building_name`,`floor`.`floor_img_X`,`floor`.`floor_img_Y`,`floor_img_path`,`sys_location_info`.`location_name`,`floor`.`building_id`,`floor`.`campus_id`,`floor`.`id`,`a`.`cnt` FROM `floor` INNER JOIN `square` `s` ON `s`.`id`=`floor`.`campus_id` INNER JOIN `building` `b` ON `b`.`id`=`floor`.`building_id` INNER JOIN `sys_location_info` `sys_location_info` ON `sys_location_info`.`location_id`=`s`.`location_id` LEFT JOIN ( SELECT count(*) AS `cnt`,`floor_id` FROM `aps` GROUP BY floor_id ) `a` ON `a`.`floor_id`=`floor`.`id` LIMIT 0,10 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:38+08:00 ] ::1 ::1 POST /ib5/index.php/index/place/getbuildings.html
+[ log ] localhost/ib5/index.php/index/place/getbuildings.html [运行时间：0.191011s][吞吐率：5.24req/s] [内存消耗：4,322.29kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'getbuildings',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->getbuildings[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `building` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `building` WHERE  (  campusId=1 ) [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:38+08:00 ] ::1 ::1 POST /ib5/index.php/index/place/getbuilding.html
+[ log ] localhost/ib5/index.php/index/place/getbuilding.html [运行时间：0.220013s][吞吐率：4.55req/s] [内存消耗：4,322.03kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'place',
+    2 => 'getbuilding',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '4',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Place->getbuilding[ G:\wamp64\www\ib5\application\index\controller\Place.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `building` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT * FROM `building` WHERE  (  campusId=1 ) [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:12:41+08:00 ] ::1 ::1 GET /ib5/index.php/index/apposition/position.html?floor_id=1
+[ log ] localhost/ib5/index.php/index/apposition/position.html?floor_id=1 [运行时间：0.261015s][吞吐率：3.83req/s] [内存消耗：4,891.62kb] [文件加载：62]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'apposition',
+    2 => 'position',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'floor_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Apposition->position[ G:\wamp64\www\ib5\application\index\controller\Apposition.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\apposition\position.html [ array (
+  0 => 'aplist',
+  1 => 'apinfo',
+  2 => 'map',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  `floor_id` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `floor`.*,`square`.`campus_name`,`square`.`location_id`,`square`.`campus_address` FROM `square` INNER JOIN `floor` `floor` ON `square`.`id`=`floor`.`campus_id` WHERE  (  floor.id=1 ) LIMIT 1 [ RunTime:0.002001s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT `apname`,`id`,`mac`,`posX` AS `Xcor`,`posY` AS `Ycor`,`status`,`ip`,`vender`,timestampdiff(minute,up_time,now()) AS `off_minute` FROM `aps` WHERE  `floor_id` = 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `mac`,`apname`,`ip`,`vender`,`posX`,`posY` FROM `aps` ORDER BY id desc LIMIT 1 [ RunTime:0.001000s ]
+[ error ] [2]Division by zero[G:\wamp64\www\ib5\runtime\temp\f7ce74c911b21452eeebec202a3f0f6b.php:307]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:13:45+08:00 ] ::1 ::1 GET /ib5/index.php/index/apposition/position.html?floor_id=1
+[ log ] localhost/ib5/index.php/index/apposition/position.html?floor_id=1 [运行时间：0.232014s][吞吐率：4.31req/s] [内存消耗：4,528.78kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'apposition',
+    2 => 'position',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'floor_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Apposition->position[ G:\wamp64\www\ib5\application\index\controller\Apposition.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\apposition\position.html [ array (
+  0 => 'aplist',
+  1 => 'apinfo',
+  2 => 'map',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.004000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  `floor_id` = 1 LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `floor`.*,`square`.`campus_name`,`square`.`location_id`,`square`.`campus_address` FROM `square` INNER JOIN `floor` `floor` ON `square`.`id`=`floor`.`campus_id` WHERE  (  floor.id=1 ) LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SELECT `apname`,`id`,`mac`,`posX` AS `Xcor`,`posY` AS `Ycor`,`status`,`ip`,`vender`,timestampdiff(minute,up_time,now()) AS `off_minute` FROM `aps` WHERE  `floor_id` = 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `mac`,`apname`,`ip`,`vender`,`posX`,`posY` FROM `aps` ORDER BY id desc LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T04:13:46+00:00 ] ::1 ::1 GET /ib5/public/1_1_1.json
+[ log ] localhost/ib5/public/1_1_1.json [运行时间：0.105006s][吞吐率：9.52req/s] [内存消耗：2,372.04kb] [文件加载：34]
+[ error ] [8]Use of undefined constant __DIRNAME__ - assumed '__DIRNAME__'[G:\wamp64\www\ib5\application\config.php:143]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-07-28T12:47:35+08:00 ] ::1 ::1 POST /ib5/index.php/index/apposition/saveapinfo.html
+[ log ] localhost/ib5/index.php/index/apposition/saveapinfo.html [运行时间：0.220013s][吞吐率：4.55req/s] [内存消耗：4,351.59kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'apposition',
+    2 => 'saveapinfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '108',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/apposition/position.html?floor_id=1',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'x' => '1.7625000000000002',
+  'y' => '1.6625',
+  'mac' => '11',
+  'ip' => '11',
+  'vender' => '1',
+  'floor_id' => '1',
+  'campus_id' => '1',
+  'building_id' => '1',
+  'apname' => '11',
+  'location' => '',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Apposition->saveapinfo[ G:\wamp64\www\ib5\application\index\controller\Apposition.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT * FROM `aps` WHERE  `mac` = '11'  OR `apname` = '11'  OR `ip` = '11' LIMIT 1 [ RunTime:0.003000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] INSERT INTO `aps` (`up_time` , `mac` , `apname` , `ip` , `vender` , `ssid` , `posX` , `posY` , `floor_id` , `campus_id` , `building_id`) VALUES ('2017-07-28 12:47:35' , '11' , '11' , '11' , '1' , '11' , 1.7625 , 1.6625 , 1 , '1' , '1') [ RunTime:0.002000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:47:38+08:00 ] ::1 ::1 GET /ib5/index.php/index/apposition/position.html?floor_id=1
+[ log ] localhost/ib5/index.php/index/apposition/position.html?floor_id=1 [运行时间：0.291016s][吞吐率：3.44req/s] [内存消耗：4,528.93kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'apposition',
+    2 => 'position',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'floor_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Apposition->position[ G:\wamp64\www\ib5\application\index\controller\Apposition.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\apposition\position.html [ array (
+  0 => 'aplist',
+  1 => 'apinfo',
+  2 => 'map',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.012000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  `floor_id` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.004000s ]
+[ sql ] [ SQL ] SELECT `floor`.*,`square`.`campus_name`,`square`.`location_id`,`square`.`campus_address` FROM `square` INNER JOIN `floor` `floor` ON `square`.`id`=`floor`.`campus_id` WHERE  (  floor.id=1 ) LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.005000s ]
+[ sql ] [ SQL ] SELECT `apname`,`id`,`mac`,`posX` AS `Xcor`,`posY` AS `Ycor`,`status`,`ip`,`vender`,timestampdiff(minute,up_time,now()) AS `off_minute` FROM `aps` WHERE  `floor_id` = 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `mac`,`apname`,`ip`,`vender`,`posX`,`posY` FROM `aps` ORDER BY id desc LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T04:47:38+00:00 ] ::1 ::1 GET /ib5/public/1_1_1.json
+[ log ] localhost/ib5/public/1_1_1.json [运行时间：0.099006s][吞吐率：10.10req/s] [内存消耗：2,372.04kb] [文件加载：34]
+[ error ] [8]Use of undefined constant __DIRNAME__ - assumed '__DIRNAME__'[G:\wamp64\www\ib5\application\config.php:143]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-07-28T12:47:48+08:00 ] ::1 ::1 GET /ib5/index.php/index/apposition/position.html?floor_id=1
+[ log ] localhost/ib5/index.php/index/apposition/position.html?floor_id=1 [运行时间：0.231013s][吞吐率：4.33req/s] [内存消耗：4,528.93kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'apposition',
+    2 => 'position',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'floor_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Apposition->position[ G:\wamp64\www\ib5\application\index\controller\Apposition.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\apposition\position.html [ array (
+  0 => 'aplist',
+  1 => 'apinfo',
+  2 => 'map',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  `floor_id` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `floor`.*,`square`.`campus_name`,`square`.`location_id`,`square`.`campus_address` FROM `square` INNER JOIN `floor` `floor` ON `square`.`id`=`floor`.`campus_id` WHERE  (  floor.id=1 ) LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003001s ]
+[ sql ] [ SQL ] SELECT `apname`,`id`,`mac`,`posX` AS `Xcor`,`posY` AS `Ycor`,`status`,`ip`,`vender`,timestampdiff(minute,up_time,now()) AS `off_minute` FROM `aps` WHERE  `floor_id` = 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `mac`,`apname`,`ip`,`vender`,`posX`,`posY` FROM `aps` ORDER BY id desc LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T04:47:49+00:00 ] ::1 ::1 GET /ib5/public/1_1_1.json
+[ log ] localhost/ib5/public/1_1_1.json [运行时间：0.101006s][吞吐率：9.90req/s] [内存消耗：2,372.04kb] [文件加载：34]
+[ error ] [8]Use of undefined constant __DIRNAME__ - assumed '__DIRNAME__'[G:\wamp64\www\ib5\application\config.php:143]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-07-28T12:51:46+08:00 ] ::1 ::1 GET /ib5/index.php/index/apposition/position.html?floor_id=1
+[ log ] localhost/ib5/index.php/index/apposition/position.html?floor_id=1 [运行时间：0.236014s][吞吐率：4.24req/s] [内存消耗：4,528.93kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'apposition',
+    2 => 'position',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'floor_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Apposition->position[ G:\wamp64\www\ib5\application\index\controller\Apposition.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\apposition\position.html [ array (
+  0 => 'aplist',
+  1 => 'apinfo',
+  2 => 'map',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  `floor_id` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `floor`.*,`square`.`campus_name`,`square`.`location_id`,`square`.`campus_address` FROM `square` INNER JOIN `floor` `floor` ON `square`.`id`=`floor`.`campus_id` WHERE  (  floor.id=1 ) LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT `apname`,`id`,`mac`,`posX` AS `Xcor`,`posY` AS `Ycor`,`status`,`ip`,`vender`,timestampdiff(minute,up_time,now()) AS `off_minute` FROM `aps` WHERE  `floor_id` = 1 [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SELECT `mac`,`apname`,`ip`,`vender`,`posX`,`posY` FROM `aps` ORDER BY id desc LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T04:51:46+00:00 ] ::1 ::1 GET /ib5/public/1_1_1.json
+[ log ] localhost/ib5/public/1_1_1.json [运行时间：0.113007s][吞吐率：8.85req/s] [内存消耗：2,372.04kb] [文件加载：34]
+[ error ] [8]Use of undefined constant __DIRNAME__ - assumed '__DIRNAME__'[G:\wamp64\www\ib5\application\config.php:143]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-07-28T12:52:03+08:00 ] ::1 ::1 POST /ib5/index.php/index/apposition/savedate.html
+[ log ] localhost/ib5/index.php/index/apposition/savedate.html [运行时间：0.196012s][吞吐率：5.10req/s] [内存消耗：4,291.91kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'apposition',
+    2 => 'savedate',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '44',
+  'accept' => '*/*',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/apposition/position.html?floor_id=1',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'lat' => '-1.6625',
+  'lng' => '2.5',
+  'mac' => '11',
+  'maxposX' => '4',
+  'id' => '1802',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Apposition->savedate[ G:\wamp64\www\ib5\application\index\controller\Apposition.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] DELETE FROM `aps`    WHERE  `id` = 1802 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T12:52:04+08:00 ] ::1 ::1 GET /ib5/index.php/index/apposition/position.html?floor_id=1
+[ log ] localhost/ib5/index.php/index/apposition/position.html?floor_id=1 [运行时间：0.317018s][吞吐率：3.15req/s] [内存消耗：4,528.78kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'apposition',
+    2 => 'position',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; PHPSESSID=9imj8g9uaiodrefg7og2mj43t1; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'floor_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Apposition->position[ G:\wamp64\www\ib5\application\index\controller\Apposition.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\apposition\position.html [ array (
+  0 => 'aplist',
+  1 => 'apinfo',
+  2 => 'map',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  `floor_id` = 1 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.014001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `floor`.*,`square`.`campus_name`,`square`.`location_id`,`square`.`campus_address` FROM `square` INNER JOIN `floor` `floor` ON `square`.`id`=`floor`.`campus_id` WHERE  (  floor.id=1 ) LIMIT 1 [ RunTime:0.001001s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SELECT `apname`,`id`,`mac`,`posX` AS `Xcor`,`posY` AS `Ycor`,`status`,`ip`,`vender`,timestampdiff(minute,up_time,now()) AS `off_minute` FROM `aps` WHERE  `floor_id` = 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `mac`,`apname`,`ip`,`vender`,`posX`,`posY` FROM `aps` ORDER BY id desc LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-28T04:52:05+00:00 ] ::1 ::1 GET /ib5/public/1_1_1.json
+[ log ] localhost/ib5/public/1_1_1.json [运行时间：0.090005s][吞吐率：11.11req/s] [内存消耗：2,372.04kb] [文件加载：34]
+[ error ] [8]Use of undefined constant __DIRNAME__ - assumed '__DIRNAME__'[G:\wamp64\www\ib5\application\config.php:143]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------

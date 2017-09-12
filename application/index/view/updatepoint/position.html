@@ -1,0 +1,222 @@
+<{include file="Public:header" /}>
+
+<link rel="stylesheet" href="__PUBLIC__/js/leaflet/leaflet.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/leaflet.label.css" />
+
+<script src="__PUBLIC__/js/jquery.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript" src="__PUBLIC__/js/layer/layer.js"></script>
+<!--<script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>-->
+<script src="__PUBLIC__/js/leaflet/leaflet-src.js"></script>
+
+<script src="__PUBLIC__/js/leaflet/src/Label.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/BaseMarkerMethods.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/Marker.Label.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/Map.Label.js"></script>
+<style type="text/css">
+#holder {
+	height: 500px;
+}
+</style>
+
+<input type="text" id="x" style="display: none;" />
+<input type="text" id="y" style="display: none;" />
+<input type="text" id="floor_id" value="<{$map.id}>"
+	style="display: none;" />
+<input type="text" id="campus_id" value="<{$map.campus_id}>"
+	style="display: none;" />
+<input type="text" id="building_id" value="<{$map.building_id}>"
+	style="display: none;" />
+
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header" style="margin-top: 0px;"></h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<b>设备位置标注
+						场所：<{$map.campus_name}>'------'<{$map.floor_name}>'-----''设备位置'</b>
+					<div id="divInfo">
+						<b style="float: right">当前x坐标<span id="posX"></span>
+							&nbsp;当前y坐标<span id="posY"></span></b>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="dataTable_wrapper">
+							<div id="dataTables-example_wrapper"
+								class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+
+								<div class="row">
+									<div class="navbar-header"></div>
+									<div class="col-sm-12">
+										<div id="holder" style="cursor: default"></div>
+
+									</div>
+									<div style="clear: both;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- /.panel -->
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+</div>
+<script type="text/javascript"
+	src="__PUBLIC__/js/leaflet/MovingMarker.js">
+	</script>
+<script type="text/javascript">
+		var mymap = L.map('holder', {
+					crs: L.CRS.Simple,
+					//center: [<{$map.floor_img_Y}>/2 , <{$map.floor_img_X}>/2],
+				    zoomSnap:0.5,
+				    dragging:true,//地图拖动
+				    touchZoom:true,//手机放大缩小
+				    doubleClickZoom:false,//双击地图变大
+				    animate:false
+		});
+		 var bounds = [[0, 0], [<{$map.floor_img_Y}>, <{$map.floor_img_X}>]];
+         var image = L.imageOverlay('__PUBLIC__/<{$map.floor_img_path}>', bounds).addTo(mymap);
+        // mymap.fitBounds(bounds);
+        mymap.setView([<{$map.floor_img_Y}>/2 , <{$map.floor_img_X}>/2],<{$map.magnification}>);
+		//定义图标
+		var onicon = L.icon({
+			iconUrl: '__PUBLIC__/js/leaflet/images/ap.png',
+			iconSize: [20, 20],
+			iconAnchor: [15, 15],
+			popupAnchor: [10, 10],
+			labelAnchor: [-10, -13]
+		});
+         $coefficienty = <?php echo $map['PhysicalSizeY']/$map['floor_img_Y']?>;
+        $coefficientx =<?php echo $map['PhysicalSizeX']/$map['floor_img_X']?>;
+		var oficon = L.icon({
+			iconUrl: '__PUBLIC__/js/leaflet/images/10.png',
+			iconSize: [10, 10],
+			iconAnchor: [15, 15],
+			popupAnchor: [5, 5],
+			labelAnchor: [-10, -13]
+		});
+		var aplist =<{$aplist}>;
+		
+		returnList=  eval(aplist);
+		if(aplist != null){
+		muCnt=aplist.length;
+		for(i=0;i<muCnt;i++){
+            mymap.on('locationfound', miaodian(<{$map.floor_img_Y }>-aplist[i].posY/$coefficienty,aplist[i].posX/$coefficientx,i));
+
+		}
+	}
+       
+//拖拽保存
+function savedata(lat,lng,i){
+	$.ajax({
+		type:"post",
+		url:"__URL__/savedate",
+		dateType:'json',
+		data:{'lat':lat,'lng':lng,'maxposX':<{$map.floor_img_X}>,'i':i,'id':<?php echo $_GET['floor_id']?>},
+		success:function(result){
+			if(result){
+			}
+		}
+	});
+}
+
+//描点
+function miaodian(e,f,i) {
+    L.marker([e, f],{draggable: true,icon:oficon}).addTo(mymap)
+            .on('dragend', function (event) {
+                var marker = event.target;
+                var latlng = marker.getLatLng();
+                var lat = (<{$map.floor_img_Y}>-latlng.lat)*$coefficienty;
+                var lng = latlng.lng*$coefficientx;//
+             //   position.push([lat,lng]);
+                savedata(lng,lat,i);
+            })
+}
+
+var popup = L.popup();
+
+
+//添加点位的ajax
+var arr=[];
+function oncontextmenu(e){
+
+	var x = <{$map.floor_img_Y}>-e.latlng.lat;
+	var y= e.latlng.lng;
+	$.ajax({
+		type:"post",
+		url:"__URL__/ajaxinsertpoint",
+		dataType:'json',
+		data:{'x':x,'y':y,'floor_id':<?php echo $_GET['floor_id']?>},
+		async:true,
+		success:function(result){
+			if(result){
+                var y1= result.y;
+                var x1 =result.x;
+                x1 = parseInt(x1);
+                x1=x1+4;
+               // alert(x1);
+                L.marker([<{$map.floor_img_Y }>-y1-6, x1],{draggable: true,icon:oficon}).addTo(mymap);
+			   // alert("[<{$map.floor_img_Y }>-result.y-4");
+            }
+		}
+	});
+}
+
+        //鼠标移动
+        function  onfocus(e){
+            var x = <{$map.floor_img_Y}>*$coefficienty-e.latlng.lat*$coefficienty;
+            var y= e.latlng.lng*$coefficientx;
+
+            //alert(x);
+            y = Math.floor(y* 100) / 100;
+            x= Math.floor(x* 100) / 100;
+            $('#posX').html(y);
+            $('#posY').html(x);
+        }
+        function online(e) {
+            var x = <{$map.floor_img_Y}>-e.latlng.lat;
+            var y= e.latlng.lng;
+            arr.push([<{$map.floor_img_Y }>-x, y]);
+            // console.log(arr);
+            if(arr.length==2){
+                polyline = L.polyline(arr, {color: 'red',clickable: false}).addTo(mymap);
+               // console.log(arr[0][1]);
+            }
+        }
+        mymap.on('mousemove', onfocus);
+mymap.on('dblclick', oncontextmenu);
+//mymap.on('contextmenu',online);
+	</script>
+
+<!--<script src="__PUBLIC__/js/jquery-1.js" type="text/javascript">
+    
+</script>                     -->
+<script type="text/javascript">
+		$(document).ready(function() {
+
+			$("#checkedAll").click(function() {
+				if($(this).prop('checked')) { // 全选 
+					$("input[name='checkbox_name']").each(function() {
+						$(this).prop('checked', true);
+					});
+				} else { // 取消全选 
+					$("input[name='checkbox_name']").each(function() {
+						$(this).prop('checked', false);;
+					});
+				}
+			});
+
+		});
+	</script>
+<script src="__PUBLIC__/js/bui.js"></script>
+
+<include file="Public:footer" />

@@ -1,0 +1,266 @@
+<{include file="Public:header" /}>
+
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header" style="margin-top: 10px;"></h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-3 col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-tree fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge"><{$squarecount}></div>
+							<div>广场总数</div>
+						</div>
+					</div>
+				</div>
+				<a href="#">
+					<div class="panel-footer">
+						<span class="pull-left">view</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="panel panel-green">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-warning fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge"><{$buildingcount}></div>
+							<div>建筑数量</div>
+						</div>
+					</div>
+				</div>
+				<a href="#">
+					<div class="panel-footer">
+						<span class="pull-left">view</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="panel panel-yellow">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-laptop fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge"><{$floorcount}></div>
+							<div>楼层数量</div>
+						</div>
+					</div>
+				</div>
+				<a href="#">
+					<div class="panel-footer">
+						<span class="pull-left">view</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-6">
+			<div class="panel panel-red">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-support fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="huge"><{$apcount}></div>
+							<div>ap数量</div>
+						</div>
+					</div>
+				</div>
+				<a href="#">
+					<div class="panel-footer">
+						<span class="pull-left">view</span> <span class="pull-right"><i
+							class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- /.row -->
+	<div class="row" style="display: none;">
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<i class="fa fa-bar-chart-o fa-fw"></i>
+					<div class="pull-right">
+						<div class="btn-group">
+							<button data-toggle="dropdown"
+								class="btn btn-default btn-xs dropdown-toggle" type="button"
+								aria-expanded="false">
+								Actions <span class="caret"></span>
+							</button>
+							<ul role="menu" class="dropdown-menu pull-right">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Separated link</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /.panel-heading -->
+				<div class="panel-body">
+					<div id="main" style="height: 400px"></div>
+					<div id="morris-area-chart"></div>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+
+		</div>
+		<!-- /.col-lg-8 -->
+
+	</div>
+	<!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<script src="__PUBLIC__/js/esl.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/echarts.js"></script>
+<script type="text/javascript">
+	// 路径配置
+	require.config({
+		paths : {
+			echarts : '__PUBLIC__/js/echarts'
+		}
+	});
+
+	// 使用
+	require([ 'echarts', 'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+	],
+
+	//回调函数
+	DrawEChart
+
+	);
+
+	//var myChart;
+	//渲染ECharts图表
+	function DrawEChart(ec) {
+		var myDate = new Date();
+		var hour = myDate.getHours();
+
+		//图表渲染的容器对象
+		var chartContainer = document.getElementById("main");
+		//加载图表
+		var myChart = ec.init(chartContainer);
+		myChart.showLoading({
+			text : "图表数据正在努力加载...",
+			textStyle : {
+				color : "red",
+				fontSize : 14
+			},
+			effect : "whirling"
+		});
+		var options = {
+			title : {
+				text : '最近一小时巡检结果'
+
+			},
+			tooltip : {
+				trigger : 'axis'
+			},
+			legend : {
+				data : [ '存活标签数' ]
+			},
+			toolbox : {
+				show : true,
+				feature : {
+					mark : {
+						show : true
+					},
+					dataView : {
+						show : true,
+						readOnly : false
+					},
+					magicType : {
+						show : true,
+						type : [ 'line', 'bar', 'stack', 'tiled' ]
+					},
+					restore : {
+						show : true
+					},
+					saveAsImage : {
+						show : true
+					}
+				}
+			},
+			calculable : true,
+			xAxis : [ {
+				type : 'category',
+				boundaryGap : false,
+				data : [ hour + ':00', hour + ':10', hour + ':20',
+						hour + ':30', hour + ':40', hour + ':50' ]
+			} ],
+			yAxis : [ {
+				type : 'value'
+			} ],
+			series : [ {
+				name : '存活标签数',
+				type : 'line',
+				smooth : true,
+				itemStyle : {
+					normal : {
+						areaStyle : {
+							type : 'default'
+						}
+					}
+				},
+				data : []
+			} ]
+		};
+		//通过Ajax获取数据
+		/*    $.ajax({
+		    type: "post",
+		    url: "__URL__/ajaxClients_minutes",
+		    dataType: "json", //返回数据形式为json
+		    success: function (result) {
+		        if (result) {  
+		            //var arr = [14,24,44]; //[825, 852]
+		            //alert(result);
+		            //console.info(typeof(resutl));
+		    
+		            //将返回的category和series对象赋值给options对象内的category和series
+		            //因为xAxis是一个数组 这里需要是xAxis[i]的形式
+		            //options.xAxis[0].data = result.category;
+		            options.series[0].data = result;
+					//data : ['周一','周二','周三','周四','周五','周六','周日']
+		            //options.legend.data = result.legend;
+		            myChart.hideLoading();
+					myChart.setOption(options);
+		        }
+		    },
+		    error: function (errorMsg) {
+		        alert("不好意思，图表请求数据失败啦!");
+		    }
+		});*/
+		//myChart.setOption(options);
+	}
+</script>
+
+<{include file="Public:footer" /}>

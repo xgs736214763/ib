@@ -1,0 +1,131 @@
+[ 2017-07-31T13:22:31+08:00 ] ::1 ::1 GET /ib5/
+[ log ] localhost/ib5/ [运行时间：0.626036s][吞吐率：1.60req/s] [内存消耗：3,035.00kb] [文件加载：48]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\index\controller\Login->index[ G:\wamp64\www\ib5\application\index\controller\Login.php ]
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\login\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+
+---------------------------------------------------------------
+[ 2017-07-31T13:22:33+08:00 ] ::1 ::1 POST /ib5/index.php/index/login/dologin.html
+[ log ] localhost/ib5/index.php/index/login/dologin.html [运行时间：0.603035s][吞吐率：1.66req/s] [内存消耗：4,343.27kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'login',
+    2 => 'dologin',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '56',
+  'cache-control' => 'max-age=0',
+  'origin' => 'http://localhost',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'usernamefld' => 'admin',
+  'passwordfld' => 'admin',
+  'remember' => 'Remember Me',
+)
+[ info ] [ RUN ] app\index\controller\Login->dologin[ G:\wamp64\www\ib5\application\index\controller\Login.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.068004s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `commager` [ RunTime:0.206012s ]
+[ sql ] [ SQL ] SELECT * FROM `commager` WHERE  `loginName` = 'admin'  AND `passwd` = '21232f297a57a5a743894a0e4a801fc3' LIMIT 1 [ RunTime:0.032001s ]
+
+---------------------------------------------------------------
+[ 2017-07-31T13:22:33+08:00 ] ::1 ::1 GET /ib5/index.php/index/index/index.html
+[ log ] localhost/ib5/index.php/index/index/index.html [运行时间：0.414023s][吞吐率：2.42req/s] [内存消耗：4,337.70kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; auth=c863588c1c0e9a14c4ad1c4697100848; userName=admin; userPass=admin; PHPSESSID=jusvv21hj51sketovb1rsd79v4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Index->index[ G:\wamp64\www\ib5\application\index\controller\Index.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\index\index.html [ array (
+  0 => 'squarecount',
+  1 => 'buildingcount',
+  2 => 'floorcount',
+  3 => 'apcount',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.014000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `square` LIMIT 1 [ RunTime:0.050002s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `building` [ RunTime:0.054003s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `building` LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.055003s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `floor` LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `aps` [ RunTime:0.026002s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `aps` LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------

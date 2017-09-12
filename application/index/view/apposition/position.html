@@ -1,0 +1,439 @@
+<{include file="Public:header" /}>
+
+<link rel="stylesheet" href="__PUBLIC__/js/leaflet/leaflet.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/leaflet.label.css" />
+
+<script src="__PUBLIC__/js/jquery.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript" src="__PUBLIC__/js/layer/layer.js"></script>
+<!--<script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>-->
+<script src="__PUBLIC__/js/leaflet/leaflet-src.js"></script>
+
+<script src="__PUBLIC__/js/leaflet/src/Label.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/BaseMarkerMethods.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/Marker.Label.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/Map.Label.js"></script>
+<style type="text/css">
+#holder {
+	height: 600px;
+}
+</style>
+
+<input type="text" id="x" style="display: none;" />
+<input type="text" id="y" style="display: none;" />
+<input type="text" id="floor_id" value="<{$map.id}>"
+	style="display: none;" />
+<input type="text" id="campus_id" value="<{$map.campus_id}>"
+	style="display: none;" />
+<input type="text" id="building_id" value="<{$map.building_id}>"
+	style="display: none;" />
+
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header" style="margin-top: 0px;"></h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<b style="float: left">设备位置标注
+						场所：<{$map.campus_name}>'------'<{$map.floor_name}>'-----''设备位置'</b>
+					<div id="divInfo">
+						<b style="padding-left: 90px;"> <input type="button"
+							class="button button-success" id="success" value="触发" /></b> <b
+							style="float: right">当前x坐标<span id="posX"></span> &nbsp;当前y坐标<span
+							id="posY"></span></b>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="dataTable_wrapper">
+							<div id="dataTables-example_wrapper"
+								class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+
+								<div class="row">
+									<div class="navbar-header"></div>
+									<div class="col-sm-12">
+										<div id="holder" style="cursor: default"></div>
+
+									</div>
+									<div style="clear: both;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /.panel-body -->
+			</div>
+			<!-- 画线的长度 -->
+			<div class="hide" id="Expand">
+				<div class="control-group span8">
+					<label class="control-label" style="padding-top: 0px; width: 140px">路径的长度:</label>
+					<div class="controls">
+						<input type="text" id='length' class="input-normal control-text"
+							style="height: 30px;">
+					</div>
+				</div>
+			</div>
+			<!-- /.panel -->
+		</div>
+		<!-- /.col-lg-12 -->
+		<!-- addap -->
+		<div id="addap" class="hide">
+			<form action="" method="get">
+				<table class="content">
+					<tr style="display: none;">
+						<td><input type="text" name="location"
+							class="input-normal control-text" id="location"
+							value="<?php if(isset($_GET['mac'])){echo $_GET['mac'];}?>" />
+					</tr>
+					<tr>
+						<td>ap名称：</td>
+						<td><input type="text" name="apname"
+							class="input-normal control-text" id="apname" class="store"
+							value="<{$apinfo.apname}>" /></td>
+					</tr>
+					<tr>
+						<td>mac：</td>
+						<td><input type="text" name="mac"
+							class="input-normal control-text" id="mac" class="store"
+							value="<{$apinfo.mac}>" /></td>
+					</tr>
+					<tr>
+						<td>ip：</td>
+						<td><input type="text" name="ip"
+							class="input-normal control-text" id="ip" class="store"
+							value="<{$apinfo.ip}>" /></td>
+					</tr>
+					<tr>
+						<td>厂商：</td>
+						<td><input type="text" name="vender"
+							class="input-normal control-text" id="vender" class="store"
+							value="<{$apinfo.vender}>" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
+</div>
+<script type="text/javascript"
+	src="__PUBLIC__/js/leaflet/MovingMarker.js">
+	</script>
+<script src="__PUBLIC__/js/bui.js"></script>
+<script type="text/javascript">
+		var Overlay = BUI.Overlay;
+		var mymap = L.map('holder', {
+					crs: L.CRS.Simple,
+					//center: [<{$map.floor_img_Y}>/2 , <{$map.floor_img_X}>/2],
+				    zoomSnap:0.5,
+				    dragging:true,//地图拖动
+				    touchZoom:true,//手机放大缩小
+				    doubleClickZoom:false,//双击地图变大
+				    animate:true
+				});
+		 var bounds = [[0, 0], [<{$map.floor_img_Y}>, <{$map.floor_img_X}>]];
+         var image = L.imageOverlay('__PUBLIC__/<{$map.floor_img_path}>', bounds).addTo(mymap);
+         //mymap.fitBounds(bounds);
+         mymap.setView([<{$map.floor_img_Y}>/2 , <{$map.floor_img_X}>/2],<{$map.magnification}>);
+       // mymap.setView([200,300],0.1);
+		//定义图标
+		var onicon = L.icon({
+			iconUrl: '__PUBLIC__/js/leaflet/images/ap.png',
+			iconSize: [20, 20],
+			iconAnchor: [15, 15],
+			popupAnchor: [10, 10],
+			labelAnchor: [-10, -13] // as I want the label to appear 2px past the icon (18 + 2 - 6)
+		});
+		var oficon = L.icon({
+			iconUrl: '__PUBLIC__/js/leaflet/images/ap_gray.png',
+			iconSize: [20, 20],
+			iconAnchor: [15, 15],
+			popupAnchor: [5, 5],
+			labelAnchor: [-10, -13] // as I want the label to appear 2px past the icon (18 + 2 - 6)
+		});
+		var aplist =<{$aplist}>;
+         $coefficienty = <?php echo $map['PhysicalSizeY']/$map['floor_img_Y']?>;//lat系数
+         $coefficientx =<?php echo $map['PhysicalSizeX']/$map['floor_img_X']?>;//lng系数
+		returnList=  eval(aplist);  
+		//console.log(returnList);
+		if(aplist != null){
+		//mulist= returnList['mulist'];
+		muCnt=aplist.length; 
+		//alert(muCnt);
+		for(i=0;i<muCnt;i++){
+				if(aplist[i].status==1)
+				{
+					//alert(aplist[i].Xcor);
+					mymap.on('locationfound', onLocationFound(<{$map.floor_img_Y }>-aplist[i].Ycor/$coefficienty, aplist[i].Xcor/$coefficientx,aplist[i].mac,aplist[i].apname,aplist[i].id));
+				//  mymap.on('locationfound', onLocationFound(mulist[i].locationY, mulist[i].locationX,mulist[i].mac,mulist[i].devType));
+				  }else
+				{
+					mymap.on('locationfound', ofLocationFound(<{$map.floor_img_Y }>-aplist[i].Ycor/$coefficienty, aplist[i].Xcor/$coefficientx,aplist[i].mac,aplist[i].apname,aplist[i].id));
+				  
+				}
+				
+						
+		}
+	}
+ var position = [];
+function savedata(lat,lng,mac,id){
+	//alert(id);
+    if(confirm('确认移动吗???')){
+    	$.ajax({
+    		type:"post",
+    		url:"<{:Url('index/Apposition/savedate')}>",
+    		dateType:'json',
+    		data:{'lat':lat,'lng':lng,'mac':mac,'maxposX':<{$map.PhysicalSizeX}>,'id':id},
+    		success:function(result){
+    			if(result){
+    				//alert(result);
+    			}
+    		}
+    	});
+    }else{
+        window.location.reload();
+    }
+}
+
+function onLocationFound(e,f,mac,apname,id) {
+    L.marker([e,f],{draggable: true,icon:onicon})
+     .bindLabel(apname, { noHide: true,className:'iconsize',opacity:0.5})
+            .addTo(mymap)
+            .on('dragend', function (event) {
+                var marker = event.target;
+                var latlng = marker.getLatLng();
+                var lat = (<{$map.floor_img_Y}>-latlng.lat)*$coefficienty;
+             	var lng = latlng.lng*$coefficientx;
+                position.push([lat,lng]);
+                savedata(lng,lat,mac,id);
+               // alert(latlng);
+            }).on('dblclick',function(e){
+            	layer.open({
+					  type: 2,
+					  title: '编辑ap信息',
+					  value:'pointY',
+					  skin: 'layui-layer-rim', //加上边框
+					  area: ['420px', '440px'], //宽高
+					  content:"__URL__/addap?mac="+mac,
+					});
+				
+            });
+
+}
+function ofLocationFound(e,f,mac,apname,id) {
+    L.marker([e, f],{draggable: true,icon:oficon})
+   .bindLabel(apname, { noHide: true ,className:'iconsize',opacity:0.5})
+            .addTo(mymap)
+            .on('dragend', function (event) {
+                var marker = event.target;
+                var latlng = marker.getLatLng();
+                var lat = (<{$map.floor_img_Y}>-latlng.lat)*$coefficienty;
+             	var lng = latlng.lng*$coefficientx;
+               // position.push([lat,lng]);
+                savedata(lng,lat,mac,id);
+            }).on('dblclick',function(e){
+            	//alert(mac);
+            	layer.open({
+					  type: 2,
+					  title: '编辑ap信息',
+					  value:'pointY',
+					  skin: 'layui-layer-rim', //加上边框
+					  area: ['420px', '440px'], //宽高
+					  content:"__URL__/addap?mac="+mac,
+					});
+            });
+}
+
+
+//描点
+function miaodian(e,f,mac,apname,id) {
+    L.marker([e, f],{draggable: true,icon:oficon})
+   .bindLabel(apname, { noHide: true ,className:'iconsize',opacity:0.5})
+            .addTo(mymap)
+            .on('dragend', function (event) {
+                var marker = event.target;
+                var latlng = marker.getLatLng();
+                var lat = (<{$map.floor_img_Y}>-latlng.lat)*$coefficienty;
+             	var lng = latlng.lng*$coefficientx;
+               // position.push([lat,lng]);
+                savedata(lng,lat,mac,id);
+            })
+}
+
+var popup = L.popup();
+function onMapClick(e) {
+           $('#x').val(<{$map.floor_img_Y}>*$coefficienty-e.latlng.lat*$coefficienty);
+		   $('#y').val(e.latlng.lng*$coefficientx);
+		   var y = document.getElementById('x').value; 
+		var x = document.getElementById('y').value;
+	
+var dialog = new Overlay.Dialog({
+                title:'新增ap信息',
+                width:350,
+                height:200,
+                closeAction : 'destroy', //每次关闭dialog释放
+                contentId:'addap',
+                 buttons:[
+                  {
+                    text:'提交',
+                    elCls : 'button button-primary',
+                    handler : function(){
+                    		$floorId = document.getElementById('floor_id').value;
+							$campus_id = document.getElementById('campus_id').value;
+							$building_id = document.getElementById('building_id').value;
+							$mac=$('#mac').val();
+							$apname = $('#apname').val();
+							$ip = $('#ip').val();
+							$vender = $('#vender').val();
+							$location = $('#location').val();
+          						$.ajax({
+          							url:'<{:Url('index/Apposition/saveapinfo')}>',
+									type:'post',
+									data:{'x':x,'y':y,'mac':$mac,'ip':$ip,'vender':$vender,'floor_id':$floorId,'campus_id':$campus_id,
+                            'building_id':$building_id,'apname':$apname,'location':$location},
+									dataType:'json',
+									success:function(data){
+										if(!data.apnames){
+											L.marker([<{$map.floor_img_Y }>-y/$coefficienty, x/$coefficientx],{draggable: true,icon:onicon})
+										.bindLabel($apname, { noHide: true ,className:'iconsize',opacity:0.5})
+												.addTo(mymap)
+												.on('dragend', function (event) {
+													var marker = event.target;
+													var latlng = marker.getLatLng();
+													var lat = <{$map.floor_img_Y}>-latlng.lat;
+													var lng = latlng.lng;
+													position.push([lat,lng]);
+													savedata(lng,lat,$mac,'');
+												});
+											dialog.close();
+										}else{
+											//dispoint("修改楼层信息失败");
+											//console.log(data.apname);
+											//	alert(data['apname']);
+											alert('和'+data.apnames+'ap的名称或者mac或者ip冲突');
+										}
+                        			}
+								})
+                    }
+                  },{
+                    text:'取消',
+                    elCls : 'button',
+                    handler : function(){
+                      this.close();
+                    }
+                  }]
+              });
+              dialog.show();
+}
+
+
+var arr=[];
+
+//鼠标移动
+function  onfocus(e){
+    var x = <{$map.floor_img_Y}>*$coefficienty-e.latlng.lat*$coefficienty;
+    var y= e.latlng.lng*$coefficientx;
+	//alert(x);
+    y = Math.floor(y* 100) / 100;
+    x= Math.floor(x* 100) / 100;
+	$('#posX').html(y);
+    $('#posY').html(x);
+}
+//画线
+         function online(e) {
+             var x = <{$map.floor_img_Y}>-e.latlng.lat;
+             var y= e.latlng.lng;
+             arr.push([<{$map.floor_img_Y }>-x, y]);
+             // console.log(arr);
+             if(arr.length==2){
+                 polyline = L.polyline(arr, {color: 'red',clickable: false}).addTo(mymap);
+               //  console.log(arr[0][1]);
+                 var dialog = new Overlay.Dialog({
+                     title:'定义长度',
+                     width:300,
+                     height:200,
+                     closeAction : 'destroy', //每次关闭dialog释放
+                     contentId:'Expand',
+                     buttons:[
+                         {
+                             text:'提交',
+                             elCls : 'button button-primary',
+                             handler : function(){
+                                 var lengths    =$('#length').val();
+                                 $floor_id =<?php echo $_GET['floor_id']?>;
+                                 $.post("<{:Url('index/Apposition/ajaxlength')}>",{'floor_id':$floor_id,'length':lengths,'x1':arr[0][0],
+                                 'y1':arr[0][1],'x2':arr[1][0],'y2':arr[1][1]},function(data){
+                                     if(data){
+                                         dispoint("地图信息矫正完成");
+                                         dialog.close();
+                                         location.reload();
+                                     }else{
+                                         dispoint("地图信息矫正失败");
+                                     }
+                                 })
+                             }
+                         },{
+                             text:'取消',
+                             elCls : 'button',
+                             handler : function(){
+                                 this.close();
+                             }
+                         }]
+                 });
+                 dialog.show();
+             }
+         }
+//鼠标右键画线矫正
+ mymap.on('contextmenu',online);
+//双击添加ap
+mymap.on('dblclick', onMapClick);
+//鼠标滑过显示坐标
+mymap.on('mousemove', onfocus);
+	</script>
+
+<!--<script src="__PUBLIC__/js/jquery-1.js" type="text/javascript">
+    
+</script>                     -->
+<script type="text/javascript">
+		$(document).ready(function() {
+
+			$("#checkedAll").click(function() {
+				if($(this).prop('checked')) { // 全选 
+					$("input[name='checkbox_name']").each(function() {
+						$(this).prop('checked', true);
+					});
+				} else { // 取消全选 
+					$("input[name='checkbox_name']").each(function() {
+						$(this).prop('checked', false);;
+					});
+				}
+			});
+
+		});
+
+		function dispoint(messge) {
+			BUI.Message.Show({
+				msg: messge,
+				icon: 'success',
+				buttons: [],
+				autoHide: true,
+				autoHideDelay: 1000
+
+			});
+		}
+		//重置
+		$('#success').click(function() {
+			$.ajax({
+				type: 'post',
+				url: "<{:Url('index/Sys/udpresert')}>",
+				success: function(result) {
+					dispoint("触发成功！");
+				}
+			})
+		})
+	</script>
+
+<{include file="Public:footer" /}>

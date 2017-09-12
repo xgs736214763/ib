@@ -1,0 +1,296 @@
+[ 2017-07-17T13:56:07+08:00 ] ::1 ::1 GET /ib5/index.php/index/updatepoint/floor.html
+[ log ] localhost/ib5/index.php/index/updatepoint/floor.html [运行时间：0.639036s][吞吐率：1.56req/s] [内存消耗：4,976.48kb] [文件加载：61]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'updatepoint',
+    2 => 'floor',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/place/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; PHPSESSID=bjcsj65vgj3gumucr04p7mbo33; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Updatepoint->floor[ G:\wamp64\www\ib5\application\index\controller\Updatepoint.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\updatepoint\floor.html [ array (
+  0 => 'pro',
+  1 => 'list',
+  2 => 'page',
+  3 => 'squarelist',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `floor` INNER JOIN `square` `s` ON `s`.`id`=`floor`.`campus_id` INNER JOIN `building` `b` ON `b`.`id`=`floor`.`building_id` INNER JOIN `sys_location_info` `sys_location_info` ON `sys_location_info`.`location_id`=`s`.`location_id` LIMIT 1 [ RunTime:0.007001s ]
+[ sql ] [ SQL ] SELECT `s`.`campus_name`,`floor`.`floor_name`,`b`.`building_name`,`floor`.`floor_img_X`,`floor`.`floor_img_Y`,`sys_location_info`.`location_name`,`floor`.`building_id`,`floor`.`campus_id`,`floor`.`id` FROM `floor` INNER JOIN `square` `s` ON `s`.`id`=`floor`.`campus_id` INNER JOIN `building` `b` ON `b`.`id`=`floor`.`building_id` INNER JOIN `sys_location_info` `sys_location_info` ON `sys_location_info`.`location_id`=`s`.`location_id` LIMIT 0,10 [ RunTime:0.001000s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sys_location_info` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT * FROM `sys_location_info` WHERE  (  parent_location_id=0 ) [ RunTime:0.003000s ]
+
+---------------------------------------------------------------
+[ 2017-07-17T13:56:07+08:00 ] ::1 ::1 POST /ib5/index.php/index/updatepoint/ajaxGetAreasByCityId
+[ log ] localhost/ib5/index.php/index/updatepoint/ajaxGetAreasByCityId [运行时间：0.207012s][吞吐率：4.83req/s] [内存消耗：4,363.77kb] [文件加载：59]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'updatepoint',
+    2 => 'ajaxGetAreasByCityId',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '0',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'referer' => 'http://localhost/ib5/index.php/index/updatepoint/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; PHPSESSID=bjcsj65vgj3gumucr04p7mbo33; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Updatepoint->ajaxGetAreasByCityId[ G:\wamp64\www\ib5\application\index\controller\Updatepoint.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sys_location_info` [ RunTime:0.002000s ]
+[ error ] [10501]SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1[G:\wamp64\www\ib5\thinkphp\library\think\db\Connection.php:383]
+
+---------------------------------------------------------------
+[ 2017-07-17T13:56:09+08:00 ] ::1 ::1 GET /ib5/index.php/index/updatepoint/position?floor_id=1&campus_id=1&building_id=1
+[ log ] localhost/ib5/index.php/index/updatepoint/position?floor_id=1&campus_id=1&building_id=1 [运行时间：0.299017s][吞吐率：3.34req/s] [内存消耗：4,715.70kb] [文件加载：58]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'updatepoint',
+    2 => 'position',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/updatepoint/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; PHPSESSID=bjcsj65vgj3gumucr04p7mbo33; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'floor_id' => '1',
+  'campus_id' => '1',
+  'building_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Updatepoint->position[ G:\wamp64\www\ib5\application\index\controller\Updatepoint.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\updatepoint\position.html [ array (
+  0 => 'aplist',
+  1 => 'map',
+  2 => 'sca',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `floor`.*,`square`.`campus_name`,`square`.`location_id`,`square`.`campus_address` FROM `square` INNER JOIN `floor` `floor` ON `square`.`id`=`floor`.`campus_id` WHERE  (  floor.id=1 ) LIMIT 1 [ RunTime:0.007001s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.009000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.001000s ]
+
+---------------------------------------------------------------
+[ 2017-07-17T13:56:12+08:00 ] ::1 ::1 POST /ib5/index.php/index/updatepoint/ajaxinsertpoint
+[ log ] localhost/ib5/index.php/index/updatepoint/ajaxinsertpoint [运行时间：0.359021s][吞吐率：2.79req/s] [内存消耗：4,274.84kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'updatepoint',
+    2 => 'ajaxinsertpoint',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '22',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/updatepoint/position?floor_id=1&campus_id=1&building_id=1',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; PHPSESSID=bjcsj65vgj3gumucr04p7mbo33; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'x' => '398',
+  'y' => '220',
+  'floor_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Updatepoint->ajaxinsertpoint[ G:\wamp64\www\ib5\application\index\controller\Updatepoint.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.001000s ]
+[ sql ] [ SQL ] UPDATE `floor`  SET `adjust_data`='54,158',`point_data`='53.921568627451,158.35543766578'  WHERE  (  id=1 ) [ RunTime:0.146008s ]
+
+---------------------------------------------------------------
+[ 2017-07-17T13:56:14+08:00 ] ::1 ::1 POST /ib5/index.php/index/updatepoint/ajaxinsertpoint
+[ log ] localhost/ib5/index.php/index/updatepoint/ajaxinsertpoint [运行时间：0.264015s][吞吐率：3.79req/s] [内存消耗：4,274.97kb] [文件加载：54]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'updatepoint',
+    2 => 'ajaxinsertpoint',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'content-length' => '22',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'referer' => 'http://localhost/ib5/index.php/index/updatepoint/position?floor_id=1&campus_id=1&building_id=1',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; PHPSESSID=bjcsj65vgj3gumucr04p7mbo33; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'x' => '431',
+  'y' => '392',
+  'floor_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Updatepoint->ajaxinsertpoint[ G:\wamp64\www\ib5\application\index\controller\Updatepoint.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.008000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.002001s ]
+[ sql ] [ SQL ] UPDATE `floor`  SET `adjust_data`='54,158|96,171',`point_data`='53.921568627451,158.35543766578|96.078431372549,171.48541114058'  WHERE  (  id=1 ) [ RunTime:0.049003s ]
+
+---------------------------------------------------------------
+[ 2017-07-17T14:09:08+08:00 ] ::1 ::1 GET /ib5/index.php/index/updatepoint/position?floor_id=1&campus_id=1&building_id=1
+[ log ] localhost/ib5/index.php/index/updatepoint/position?floor_id=1&campus_id=1&building_id=1 [运行时间：0.234014s][吞吐率：4.27req/s] [内存消耗：4,448.08kb] [文件加载：56]
+[ info ] [ LANG ] G:\wamp64\www\ib5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'updatepoint',
+    2 => 'position',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'referer' => 'http://localhost/ib5/index.php/index/updatepoint/floor.html',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'a0537_times=3; UM_distinctid=15d02e2e01f6-0f4ab884e85d8a-474b0421-100200-15d02e2e020fe; CNZZDATA1260520261=1135890009-1498991043-%7C1498991043; Hm_lvt_58347d769d009bcf6074e9a0ab7ba05e=1498282664,1499393186,1499415898,1499837253; PHPSESSID=bjcsj65vgj3gumucr04p7mbo33; userName=admin; userPass=admin',
+)
+[ info ] [ PARAM ] array (
+  'floor_id' => '1',
+  'campus_id' => '1',
+  'building_id' => '1',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ RUN ] app\index\controller\Updatepoint->position[ G:\wamp64\www\ib5\application\index\controller\Updatepoint.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] G:\wamp64\www\ib5/application/index\view\updatepoint\position.html [ array (
+  0 => 'aplist',
+  1 => 'map',
+  2 => 'sca',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011001s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `square` [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SELECT `floor`.*,`square`.`campus_name`,`square`.`location_id`,`square`.`campus_address` FROM `square` INNER JOIN `floor` `floor` ON `square`.`id`=`floor`.`campus_id` WHERE  (  floor.id=1 ) LIMIT 1 [ RunTime:0.006001s ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003000s ] mysql:dbname=location_data;host=127.0.0.1;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `floor` [ RunTime:0.007000s ]
+[ sql ] [ SQL ] SELECT * FROM `floor` WHERE  (  id=1 ) LIMIT 1 [ RunTime:0.002000s ]
+
+---------------------------------------------------------------

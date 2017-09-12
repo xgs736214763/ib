@@ -1,0 +1,348 @@
+<{include file="Public:header" /}>
+
+<link rel="stylesheet" href="__PUBLIC__/js/leaflet/leaflet.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/leaflet.label.css" />
+<link rel="stylesheet"
+	href="__PUBLIC__/js/leaflet/Leaflet.Pin/src/leaflet.pin.css">
+<script src="__PUBLIC__/js/jquery.js" type="text/javascript"
+	charset="utf-8"></script>
+<script type="text/javascript" src="__PUBLIC__/js/layer/layer.js"></script>
+<!--<script src="http://cdn.leafletjs.com/leaflet/v1.0.0-rc.1/leaflet.js"></script>-->
+<script src="__PUBLIC__/js/leaflet/leaflet-src.js"></script>
+<script src="__PUBLIC__/js/leaflet/leaflet1.js"></script>
+<script src="__PUBLIC__/js/leaflet/src/leaflabel.js"></script>
+<{include file="Public:leafletdraw" /}>
+<script src="__PUBLIC__/js/leaflet/src/area.js"></script>
+<style type="text/css">
+#holder {
+	height: 500px;
+}
+</style>
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header" style="margin-top: 0px;"></h1>
+		</div>
+		<!-- /.col-lg-12 -->
+	</div>
+	<div class="panel-body">
+		<div class="dataTable_wrapper">
+			<div id="dataTables-example_wrapper"
+				class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+				<div class="row">
+
+					<div class="row">
+						<div class="col-lg-12">
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+
+									<!-- /.panel-heading -->
+									<div class="panel-body">
+										<div class="dataTable_wrapper">
+											<div id="dataTables-example_wrapper"
+												class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+
+												<div class="row">
+													<div id="areaid" class="hide">
+														<table class="content">
+															<tr>
+																<td>区域ID：</td>
+																<td><input type="text"
+																	class="input-normal control-text" id="areaids"
+																	class="store" /></td>
+															</tr>
+
+														</table>
+													</div>
+
+													<div class="col-sm-12">
+														<div id="holder" style="cursor: default"></div>
+
+													</div>
+													<div style="clear: both;"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /.panel-body -->
+							</div>
+							<!-- /.panel -->
+						</div>
+						<!-- /.col-lg-12 -->
+					</div>
+				</div>
+				<!-- <script type="text/javascript" src="__PUBLIC__/js/leaflet/MovingMarker.js"> </script>-->
+				<script src="__PUBLIC__/js/bui.js"></script>
+				<script type="text/javascript">
+	var Overlay = BUI.Overlay;
+	var map = L.map('holder', {
+		crs: L.CRS.Simple,
+		drawControl: false,
+		doubleClickZoom: false,
+		collapsed: false
+	});
+	var bounds = [
+			[0, 0],
+			[<{$map.floor_img_Y}>, <{$map.floor_img_X}>]];
+         var image = L.imageOverlay('__PUBLIC__/<{$map.floor_img_path}>', bounds).addTo(map);
+        // map.fitBounds(bounds);
+         map.setView([<{$map.floor_img_Y}>/2 , <{$map.floor_img_X}>/2],<{$map.magnification}>);
+      drawnItems = L.featureGroup().addTo(map);
+	  var oficon = L.icon({
+				iconUrl: '__PUBLIC__/js/leaflet/images/10.png',
+				iconSize: [10, 10],
+				iconAnchor: [15, 15],
+				popupAnchor: [5, 5],
+				labelAnchor: [-10, -13]
+			});
+	    map.addControl(new L.Control.Draw({
+	        edit: {
+	            featureGroup: drawnItems,
+	            poly: {
+	                allowIntersection: false,
+	                showArea: true
+	            }
+	        },
+        draw: {
+            polygon: {
+                allowIntersection: false,
+                showArea: true
+            }
+        }
+	    }));
+	$coefficienty = <?php echo $map['PhysicalSizeY']/$map['floor_img_Y']?>;//lat系数
+  $coefficientx =<?php echo $map['PhysicalSizeX']/$map['floor_img_X']?>;//lng系数
+    map.on(L.Draw.Event.CREATED, function (event) {
+        var layer = event.layer;
+       
+        var jsons =layer._latlngs;
+        var jsons1 =jsons.slice();
+				console.log(jsons);
+				var list = {};
+				for(var i=0;i<jsons.length;i++){
+						list["lng"+i] = jsons[i].lng*$coefficientx;
+						list["lat"+i] = <{$map.floor_img_Y}>*$coefficienty-jsons[i].lat*$coefficienty;
+				}
+				drawnItems.addLayer(layer);
+				for(var i=0;i<jsons1.length;i++){
+					
+						jsons1[i].lng = jsons[i].lng*$coefficientx;
+						jsons1[i].lat = <{$map.floor_img_Y}>*$coefficienty-jsons[i].lat*$coefficienty;
+				}
+				layer._latlngs = jsons1;
+				var area=(LGeo.area(layer)/1000000).toFixed(0);
+				console.log(area);
+				$.ajax({
+					url:"__URL__/insertdata?floor_id=<?php echo input('floor_id/d')?>&area="+area,
+					type:'post',
+					data: list,
+					dataType:'json',
+					// traditional: true, 
+					success:function(result){
+						//console.log(layer);
+					}
+				});
+        
+    });
+    var lists1 = {};
+    var area;
+    map.on('draw:edited', function (e) {
+    	//console.log(e);
+         var layers = e.layers;
+         //console.log(layers);
+         layers.eachLayer(function (layer) {
+         			var jsons =layer.editing.latlngs;
+         			var jsons1 =jsons.slice();
+         			
+							for(var i=0;i<jsons[0].length;i++){
+									lists1["lngs"+i] = jsons[0][i].lng*$coefficientx;
+									lists1["lats"+i] = <{$map.floor_img_Y}>*$coefficienty-jsons[0][i].lat*$coefficienty;
+							}
+							for(var i=0;i<jsons1[0].length;i++){
+					
+									jsons1[0][i].lng = jsons[0][i].lng*$coefficientx;
+									jsons1[0][i].lat = <{$map.floor_img_Y}>*$coefficienty-jsons[0][i].lat*$coefficienty;
+							}
+							console.log(jsons1);
+							 area=(LGeo.area(layer)/1000000).toFixed(0);
+							console.log(area);
+							dialogs.show();
+         });
+     });
+     //删除
+      map.on('draw:deleted ', function (e) {
+         var layers = e.layers;
+         layers.eachLayer(function (layer) {
+         			var jsons =layer.editing.latlngs;
+         			console.log(jsons);
+         			var lists = {};
+							for(var i=0;i<jsons[0].length;i++){
+									lists["lngs"+i] = jsons[0][i].lng*$coefficientx;
+									lists["lats"+i] = <{$map.floor_img_Y}>*$coefficienty-jsons[0][i].lat*$coefficienty;
+							}
+							$.ajax({
+								url:"__URL__/deletepoints?floor_id=<?php echo input('floor_id/d')?>",
+								type:'post',
+								data: lists,
+								dataType:'json',
+								// traditional: true, 
+								success:function(result){
+									//console.log(layer);
+									window.location.reload();
+								}
+							});
+         });
+     });
+ var pointlist =<{$pointlist}>;
+ 
+ if(pointlist !=''){
+ 	pointlist1 = JSON.stringify(pointlist).replace(/\"/g,"");
+	pointlist=  eval(pointlist1);  
+	var arr=[];
+	for($i=0;$i<pointlist.length;$i++){
+		pointlists= pointlist[$i];
+		var polygon= polygon+$i;
+		var polygon = new L.Polygon(pointlists).addTo(drawnItems);
+		var i = arr[$i];
+		//console.log(i);
+		<{notempty name='id'}>
+		<{volist name='id' id='vo'}>
+			arr.push(<{$vo}>) ;
+			if($i==<{$key}>){
+				//console.log($i);
+				L.marker(pointlists[0], {
+					icon: oficon
+				}).bindLabel("<?php echo $id[$key]?>").addTo(map).showLabel();
+				// polygon.bindPopup("<?php echo $id[$key]?>");
+			}
+		<{/volist}>
+		<{/notempty}>
+	 }
+
+
+} 
+
+
+//倒计时
+var timer =110;
+function Countdown() {
+	$('#curtime').text(timer);
+    if (timer >= 1) {
+        timer -= 1;
+        setTimeout(function() {
+            Countdown();
+        }, 1000);
+    }else{
+    	timer =110;
+    }
+}
+//双击弹出
+var lats;//定义xy ajax传值
+var lngs;
+function oncontextmenu(e){
+	Countdown();
+	var lng = e.latlng.lng*$coefficientx;
+	var lat = <{$map.floor_img_Y}>*$coefficienty-e.latlng.lat*$coefficienty;
+	
+	lng = Math.round(lng*100);
+	lngs =lng;
+	
+	lat = Math.round(lat*100);
+	lats= lat;
+	dialog.show();    			
+}
+drawnItems.on('dblclick', oncontextmenu);
+map.on('dblclick', oncontextmenu);
+
+//指纹采集区域
+ var dialog = new Overlay.Dialog({
+     title:'输入区域ID',
+     width:300,
+     height:200,
+    // closeAction : 'destroy', //每次关闭dialog释放
+     contentId:'areaid',
+     buttons:[
+         {
+             text:'提交',
+             elCls : 'button button-primary',
+             handler : function(){
+             	$areaid = $('#areaids').val();
+             		openshow();
+                $.ajax({
+								 //  url:'__URL__/udpsends',
+								   url:'<{:Url("Fingerprint/udpsends","floor_id=".input("floor_id/d"))}>',
+								   data:{'areaid':$areaid,'lat':lats,'lng':lngs},
+								   dataType:'json',
+								   type:'post',
+								   success:function(){
+								   		dialog.close();
+								   }
+								})
+                 
+             }
+         },{
+             text:'取消',
+             elCls : 'button',
+             handler : function(){
+                 this.close();
+             }
+         }]
+ });
+// 编辑区域输入id
+ var dialogs = new Overlay.Dialog({
+     title:'输入编辑区域ID',
+     width:300,
+     height:200,
+   //  closeAction : 'destroy', //每次关闭dialog释放
+     contentId:'areaid',
+     buttons:[
+         {
+             text:'提交',
+             elCls : 'button button-primary',
+             handler : function(){
+             	$areaid = $('#areaids').val();
+                $.ajax({
+								url:"__URL__/updatepoints?floor_id=<?php echo input('floor_id/d')?>&areaid="+$areaid+'&area='+area,
+								type:'post',
+								data: lists1,
+								dataType:'json',
+								// traditional: true, 
+								success:function(result){
+									dialogs.close();
+								}
+							});
+                 
+             }
+         },{
+             text:'取消',
+             elCls : 'button',
+             handler : function(){
+                 dialogs.close();
+             }
+         }]
+ });
+
+function openshow(){
+			layer.open({
+			  type: 1
+			  ,title: false //不显示标题栏
+			  ,closeBtn: false
+			  ,area: '300px;'
+			  ,shade: 0.8
+			  ,time:timer*1000
+			  ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+			  ,resize: false
+			  ,btnAlign: 'c'
+			  ,moveType: 1 //拖拽模式，0或者1
+			  ,content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">指纹采集中，请稍后<span style="color:red" id="curtime"></span>秒</div>'
+			  ,success: function(layero){
+			    
+			  }
+			});
+}
+						</script>
+				<script src="__PUBLIC__/js/bui.js"></script>
+
+				<{include file="Public:footer" /}>
